@@ -1,5 +1,5 @@
 from selenium import webdriver
-#from selenium.webdriver.chrome.options import Options
+# from selenium.webdriver.chrome.options import Options
 from time import sleep
 import time
 from selenium.webdriver.support import expected_conditions as EC
@@ -13,7 +13,7 @@ import requests
 import tkinter as tk
 from tkinter import simpledialog
 
-#Pop up asking for the link
+# Pop up asking for the link
 root = tk.Tk()
 root.withdraw()
 user_input = simpledialog.askstring("Link", "Please enter the link:")
@@ -21,26 +21,26 @@ print(user_input)
 
 # Instantiate the webdriver with the executable location of MS Edge web driver
 browser = webdriver.Edge("C:\Program Files (x86)\msedgedriver.exe")
-browser.maximize_window()
+# browser.maximize_window()
 browser.get('https://twittervideodownloader.com/')
 # Find the element by ID or other locator
 input_field = browser.find_element_by_name("tweet")
-#send link input by user into input field on browser
+# send link input by user into input field on browser
 input_field.send_keys(user_input)
 submit_button = browser.find_element_by_class_name("button")
 submit_button.click()
 
-#time.sleep(3)
-#Search for download button
+# time.sleep(3)
+# Search for download button
 download_button = browser.find_element_by_link_text("Download Video")
 download_button.click()
 
-#DOWNLOAD
+# DOWNLOAD
 # the URL of the video file to download
 url = browser.current_url
 
 current_dir = os.getcwd()
-file_path = os.path.join(current_dir + "\Downloads", "video.mp4")
+file_path = os.path.join(current_dir + "\Downloads", "zvideo.mp4")
 
 # send a GET request to the URL
 response = requests.get(url)
@@ -56,8 +56,6 @@ else:
 
 browser.quit()
 
-downloads_path = os.path.expanduser(r"C:\Users\radit\Desktop\Python Practice\twt-vid-downloader\Downloads")
+downloads_path = os.path.expanduser(
+    r"C:\Projects\twt-vid-downloader\Downloads")
 os.startfile(downloads_path)
-
-    
-    
